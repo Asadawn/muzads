@@ -38,8 +38,8 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        {/* Main Chart Area (Placeholder) */}
+      {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+        
         <div className="col-span-4 rounded-xl border border-border bg-card p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-foreground">Overview</h3>
@@ -56,7 +56,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Recent Activity / Campaigns */}
+        
         <div className="col-span-3 rounded-xl border border-border bg-card p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-foreground">Recent Campaigns</h3>
@@ -86,7 +86,7 @@ export default function DashboardPage() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
