@@ -43,11 +43,11 @@ export default function LoginPage() {
             </Link>
 
             <div>
-              <div className="inline-flex p-[2px] rounded-full bg-gradient-brand mb-5">
-                {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background">
+              {/* <div className="inline-flex p-[2px] rounded-full bg-gradient-brand mb-5">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background">
                   <span className="text-sm text-muted-foreground">Welcome back</span>
-                </div> */}
-              </div>
+                </div>
+              </div> */}
               <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-3 text-balance">
                 Sign in to keep your content flowing.
               </h1>
