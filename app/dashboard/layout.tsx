@@ -14,18 +14,55 @@ import {
   Search, 
   Bell, 
   User,
-  Plus
+  Plus,
+  Users,          // For Audience
+  Library,        // For Creative Library
+  MapPin,         // For Placements
+  CreditCard,     // For Billing & Payments
+  HelpCircle,     // For Help & Support
+  ChevronLeft     // For the collapse button at the bottom
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-const sidebarItems = [
-  { icon: LayoutDashboard, label: "Overview", href: "/dashboard" },
-  { icon: Megaphone, label: "Campaigns", href: "/dashboard/campaigns" },
-  { icon: BarChart3, label: "Analytics", href: "/dashboard/analytics" },
-  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
-]
+// const sidebarItems = [
+//   { icon: LayoutDashboard, label: "Overview", href: "/dashboard" },
+//   { icon: Megaphone, label: "Campaigns", href: "/dashboard/campaigns" },
+//   { icon: BarChart3, label: "Analytics", href: "/dashboard/analytics" },
+//   { icon: Settings, label: "Settings", href: "/dashboard/settings" },
+// ]
 
+
+const sidebarItems = [
+  // Top Section
+  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
+  { icon: Megaphone, label: "Campaigns", href: "/dashboard/campaigns" },
+  
+  // Action Button Style (Matches the blue "Create" button in image)
+  { icon: PlusCircle, label: "Create Campaign", href: "/dashboard/create", variant: "primary" },
+  
+  // Asset Management
+  { icon: Users, label: "Audience", href: "/dashboard/audience" },
+  { icon: Library, label: "Creative Library", href: "/dashboard/creative" },
+  
+  { type: "separator" }, // For the visual line divider
+
+  // Data & Placements
+  { icon: BarChart3, label: "Analytics / Insights", href: "/dashboard/analytics" },
+  { icon: MapPin, label: "Placements", href: "/dashboard/placements" },
+  { icon: Zap, label: "Automation", href: "/dashboard/automation" },
+
+  { type: "separator" },
+
+  // Admin & Support
+  { icon: CreditCard, label: "Billing & Payments", href: "/dashboard/billing" },
+  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
+  
+  { type: "separator" },
+  
+  { icon: HelpCircle, label: "Help & Support", href: "/dashboard/support" },
+  { icon: FileText, label: "Documentation", href: "/dashboard/docs" },
+];
 export default function DashboardLayout({
   children,
 }: {
