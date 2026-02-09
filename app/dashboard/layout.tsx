@@ -104,7 +104,7 @@ export default function DashboardLayout({
           </div>
 
           {/* Nav Items */}
-          <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+          <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-1 custom-scrollbar">
             {sidebarItems.map((item, index) => {
               if (item.type === "separator") {
                 return <div key={index} className="my-2 border-t border-border" />
