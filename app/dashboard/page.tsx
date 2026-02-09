@@ -2,8 +2,7 @@ import React from "react"
 import { 
   TrendingUp, 
   Users, 
-  MousePointerClick, 
-  ArrowUpRight,
+  MousePointerClick,
   MoreHorizontal
 } from "lucide-react"
 

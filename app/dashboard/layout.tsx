@@ -20,7 +20,10 @@ import {
   MapPin,         // For Placements
   CreditCard,     // For Billing & Payments
   HelpCircle,     // For Help & Support
-  ChevronLeft     // For the collapse button at the bottom
+  ChevronLeft,    // For the collapse button at the bottom
+  PlusCircle,
+  Zap,
+  FileText
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -61,7 +64,7 @@ const sidebarItems = [
   { type: "separator" },
   
   { icon: HelpCircle, label: "Help & Support", href: "/dashboard/support" },
-  { icon: FileText, label: "Documentation", href: "/dashboard/docs" },
+  // { icon: FileText, label: "Documentation", href: "/dashboard/docs" },
 ];
 export default function DashboardLayout({
   children,
@@ -102,7 +105,13 @@ export default function DashboardLayout({
 
           {/* Nav Items */}
           <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-1">
-            {sidebarItems.map((item) => {
+            {sidebarItems.map((item, index) => {
+              if (item.type === "separator") {
+                return <div key={index} className="my-2 border-t border-border" />
+              }
+              
+              if (!item.href || !item.icon) return null
+
               const isActive = pathname === item.href
               const Icon = item.icon
               return (
@@ -126,7 +135,7 @@ export default function DashboardLayout({
 
           {/* User Profile / Logout */}
           <div className="p-4 border-t border-border space-y-4">
-            <div className="flex items-center gap-3 px-2">
+            {/* <div className="flex items-center gap-3 px-2">
               <div className="w-8 h-8 rounded-full bg-gradient-brand flex items-center justify-center text-white text-xs font-bold">
                 JD
               </div>
@@ -134,7 +143,7 @@ export default function DashboardLayout({
                 <p className="text-sm font-medium truncate text-foreground">John Doe</p>
                 <p className="text-xs text-muted-foreground truncate">john@muzads.com</p>
               </div>
-            </div>
+            </div> */}
             <Button 
               variant="outline" 
               className="w-full justify-start text-muted-foreground hover:text-destructive hover:bg-destructive/10 border-border"
