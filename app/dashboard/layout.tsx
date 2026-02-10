@@ -183,9 +183,11 @@ export default function DashboardLayout({
           </div>
 
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm" className="hidden sm:flex items-center gap-2 border-primary/20 bg-primary/5 text-primary hover:bg-primary/10 hover:text-primary">
-              <Plus className="w-4 h-4" />
-              New Campaign
+            <Button variant="outline" size="sm" className="hidden sm:flex items-center gap-2 border-primary/20 bg-primary/5 text-primary hover:bg-primary/10 hover:text-primary" asChild>
+              <Link href="/dashboard/create">
+                <Plus className="w-4 h-4" />
+                New Campaign
+              </Link>
             </Button>
             <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground relative">
               <Bell className="w-5 h-5" />
