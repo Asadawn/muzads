@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown } from "lucide-react"
 import {
@@ -81,8 +82,14 @@ export function Navbar() {
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-brand flex items-center justify-center">
-              <span className="text-white font-bold text-sm">M</span>
+            <div className="relative w-8 h-8 flex items-center justify-center">
+              <Image 
+                src="/muzadslogo.png" 
+                alt="Muzads Logo" 
+                width={40} 
+                height={40} 
+                className="object-contain bg-white rounded-full p-0 group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300"
+              />
             </div>
             <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
               Muzads

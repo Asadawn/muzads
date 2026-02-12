@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -89,8 +90,14 @@ export function Footer() {
             © 2025 All Rights Reserved
           </p>
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-brand flex items-center justify-center">
-              <span className="text-white font-bold text-sm">M</span>
+            <div className="relative w-8 h-8 flex items-center justify-center">
+              <Image 
+                src="/muzadslogo.png" 
+                alt="Muzads Logo" 
+                width={32} 
+                height={32} 
+                className="object-contain bg-white rounded-full p-0 group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300"
+              />
             </div>
             <span className="text-2xl font-bold text-foreground tracking-tight">
               Muzads
