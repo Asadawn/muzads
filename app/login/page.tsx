@@ -3,6 +3,7 @@
 import React from "react"
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -39,9 +40,15 @@ export default function LoginPage() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div className="space-y-6">
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center text-white font-bold">
-                M
-              </span>
+              <div className="relative w-10 h-10 flex items-center justify-center">
+                <Image 
+                  src="/muzadslogo.png" 
+                  alt="Muzads Logo" 
+                  width={40} 
+                  height={40} 
+                  className="object-contain bg-white rounded-full p-0 transition-all duration-300"
+                />
+              </div>
               <span className="text-2xl font-bold tracking-tight text-foreground">Muzads</span>
             </Link>
 

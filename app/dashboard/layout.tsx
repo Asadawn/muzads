@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { 
   LayoutDashboard, 
@@ -96,9 +97,15 @@ export default function DashboardLayout({
           {/* Logo */}
           <div className="h-16 flex items-center px-6 border-b border-border">
             <Link href="/dashboard" className="flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-gradient-brand flex items-center justify-center text-white font-bold text-sm">
-                M
-              </span>
+              <div className="relative w-8 h-8 flex items-center justify-center">
+                <Image 
+                  src="/muzadslogo.png" 
+                  alt="Muzads Logo" 
+                  width={32} 
+                  height={32} 
+                  className="object-contain bg-white rounded-full p-0 transition-all duration-300"
+                />
+              </div>
               <span className="text-xl font-bold tracking-tight text-foreground">Muzads</span>
             </Link>
           </div>
