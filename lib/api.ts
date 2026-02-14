@@ -32,10 +32,101 @@ export interface UserResponse {
   is_verified: boolean;
 }
 
+export interface BusinessRequest {
+  user_id: string | number;
+  business_name: string;
+  business_url: string;
+  business_description?: string;
+}
+
+export interface BusinessResponse {
+  id: string | number;
+  user_id: string | number;
+  business_name: string;
+  business_url: string;
+  business_description: string;
+}
+
 export class APIError extends Error {
   constructor(public message: string, public statusCode?: number) {
     super(message);
     this.name = 'APIError';
+  }
+}
+
+/**
+ * Create a new business
+ */
+export async function createBusiness(businessData: BusinessRequest): Promise<BusinessResponse> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/business`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(businessData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new APIError(data.message || 'Failed to create business', response.status);
+    }
+
+    return data;
+  } catch (error) {
+    if (error instanceof APIError) throw error;
+    throw new APIError('Network error. Please check your connection.');
+  }
+}
+
+/**
+ * Fetch all businesses for a specific user
+ */
+export async function getBusinessesByUser(userId: string | number): Promise<BusinessResponse[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/business/user/${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new APIError(data.message || 'Failed to fetch businesses', response.status);
+    }
+
+    return data;
+  } catch (error) {
+    if (error instanceof APIError) throw error;
+    throw new APIError('Network error. Please check your connection.');
+  }
+}
+
+/**
+ * Delete a business by ID
+ */
+export async function deleteBusiness(businessId: string | number): Promise<{ message: string }> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/business/${businessId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new APIError(data.message || 'Failed to delete business', response.status);
+    }
+
+    return data;
+  } catch (error) {
+    if (error instanceof APIError) throw error;
+    throw new APIError('Network error. Please check your connection.');
   }
 }
 

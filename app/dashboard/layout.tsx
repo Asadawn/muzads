@@ -58,9 +58,9 @@ const sidebarItems = [
   { icon: PlusCircle, label: "Create Campaign", href: "/dashboard/create", variant: "primary" },
   
   // Asset Management
+  { icon: Building2, label: "Add Business", href: "/dashboard/add-business" },
   { icon: Users, label: "Audience", href: "/dashboard/audience" },
   { icon: Library, label: "Creative Library", href: "/dashboard/creative" },
-  { icon: Building2, label: "Add Business", href: "/dashboard/add-business" },
   
   { type: "separator" }, // For the visual line divider
 
