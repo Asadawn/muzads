@@ -8,19 +8,50 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Eye, EyeOff, ArrowRight } from "lucide-react"
+import { Eye, EyeOff, ArrowRight, AlertCircle } from "lucide-react"
+import { useAuth } from "@/contexts/AuthContext"
+import { APIError } from "@/lib/api"
+import { useToast } from "@/hooks/use-toast"
 
 export default function LoginPage() {
   const router = useRouter()
+  const { login } = useAuth()
+  const { toast } = useToast()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    email: "",
+    password: ""
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setIsLoading(false)
-    router.push("/onboarding")
+    try {
+      await login({
+        email: formData.email,
+        password: formData.password
+      })
+      
+      toast({
+        title: "Welcome back!",
+        description: "Successfully signed in to your account.",
+      })
+      
+      // Redirect to onboarding after successful login
+      router.push("/onboarding")
+    } catch (err) {
+      const errorMessage = err instanceof APIError || err instanceof Error 
+        ? err.message 
+        : "An unexpected error occurred. Please try again."
+      
+      toast({
+        variant: "destructive",
+        title: "Login failed",
+        description: errorMessage,
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleGoogleSignIn = () => {
@@ -111,6 +142,8 @@ export default function LoginPage() {
                     type="email"
                     placeholder="hello@example.com"
                     className="bg-background border-border focus:border-primary h-11"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
                   />
                 </div>
@@ -131,6 +164,8 @@ export default function LoginPage() {
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       className="bg-background border-border focus:border-primary h-11 pr-10"
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       required
                     />
                     <button

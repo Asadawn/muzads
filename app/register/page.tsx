@@ -4,20 +4,56 @@ import React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Eye, EyeOff, ArrowRight } from "lucide-react"
+import { Eye, EyeOff, ArrowRight, AlertCircle } from "lucide-react"
+import { useAuth } from "@/contexts/AuthContext"
+import { APIError } from "@/lib/api"
+import { useToast } from "@/hooks/use-toast"
 
 export default function RegisterPage() {
+  const router = useRouter()
+  const { register } = useAuth()
+  const { toast } = useToast()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: ""
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    setIsLoading(false)
+    try {
+      await register({
+        email: formData.email,
+        password: formData.password,
+        is_verified: false
+      })
+      
+      toast({
+        title: "Account created!",
+        description: "Welcome to Muzads! We're glad to have you here.",
+      })
+      
+      // Redirect to onboarding after successful registration and auto-login
+      router.push("/onboarding")
+    } catch (err) {
+      const errorMessage = err instanceof APIError || err instanceof Error 
+        ? err.message 
+        : "An unexpected error occurred. Please try again."
+      
+      toast({
+        variant: "destructive",
+        title: "Registration failed",
+        description: errorMessage,
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleGoogleSignUp = () => {
@@ -108,6 +144,8 @@ export default function RegisterPage() {
                     type="text"
                     placeholder="John Doe"
                     className="bg-background border-border focus:border-primary h-11"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
                   />
                 </div>
@@ -119,6 +157,8 @@ export default function RegisterPage() {
                     type="email"
                     placeholder="hello@example.com"
                     className="bg-background border-border focus:border-primary h-11"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
                   />
                 </div>
@@ -131,6 +171,8 @@ export default function RegisterPage() {
                       type={showPassword ? "text" : "password"}
                       placeholder="Create a strong password"
                       className="bg-background border-border focus:border-primary h-11 pr-10"
+                      value={formData.password}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       required
                     />
                     <button
