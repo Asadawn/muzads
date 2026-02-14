@@ -1,6 +1,8 @@
 import React from "react"
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { AuthProvider } from '@/contexts/AuthContext'
+import { Toaster } from "@/components/ui/toaster"
 
 import './globals.css'
 
@@ -22,7 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="font-sans antialiased" suppressHydrationWarning>{children}</body>
+      <body className="font-sans antialiased" suppressHydrationWarning>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+        <Toaster />
+      </body>
     </html>
   )
 }
