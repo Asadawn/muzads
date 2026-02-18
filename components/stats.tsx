@@ -11,58 +11,98 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="py-24 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-muted-foreground mb-4">AI trained on millions of marketing assets from top ecommerce brands</p>
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
-            This isn't just AI. It's content intelligence.
+    <section className="py-24 px-4 relative overflow-hidden bg-background">
+      <div className="max-w-6xl mx-auto relative">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            Advertising Without Borders
           </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            This isn't just AI. It's content intelligence.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center p-6 rounded-2xl bg-card border border-border"
-            >
-              <p className="text-3xl md:text-4xl font-bold text-primary mb-2">
-                {stat.value}
-              </p>
-              <p className="text-sm text-muted-foreground">
-                {stat.label}
-              </p>
+        {/* Hero-like Globe Section */}
+        <div className="relative h-[500px] md:h-[600px] flex items-center justify-center">
+          {/* Background Video (Globe) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="relative w-full max-w-[500px] aspect-square">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-contain mix-blend-lighten opacity-80"
+              >
+                <source src="/earthvideo.mp4" type="video/mp4" />
+              </video>
+              {/* Glow effect behind video */}
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-[80px] -z-10" />
             </div>
-          ))}
-        </div>
-
-        {/* Additional features */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-8 rounded-2xl bg-card border border-border">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Globe className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">99+ languages</h3>
-            </div>
-            <p className="text-muted-foreground">
-              Works seamlessly with your stack. Post across every major platform, without switching tools.
-            </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-card border border-border">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                <Brain className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">1 tool to do it all</h3>
+          {/* Floating Cards - Desktop Layout */}
+          <div className="hidden md:block absolute inset-0">
+            {/* Top Left */}
+            <div className="absolute top-[10%] left-[5%] animate-float">
+              <StatCard 
+                label="Existing users" 
+                value="214,755" 
+                className="shadow-xl shadow-primary/5"
+              />
             </div>
-            <p className="text-muted-foreground">
-              Save $400/month. Just get Muzads. High-performing design personalized for your brand.
-            </p>
+            {/* Top Right */}
+            <div className="absolute top-[15%] right-[5%] animate-float" style={{ animationDelay: "1s" }}>
+              <StatCard 
+                label="Coverage countries" 
+                value="80+" 
+                className="shadow-xl shadow-primary/5"
+              />
+            </div>
+            {/* Bottom Left */}
+            <div className="absolute bottom-[20%] left-[8%] animate-float" style={{ animationDelay: "2s" }}>
+              <StatCard 
+                label="Industries" 
+                value="40+" 
+                className="shadow-xl shadow-primary/5"
+              />
+            </div>
+            {/* Bottom Right */}
+            <div className="absolute bottom-[10%] right-[8%] animate-float" style={{ animationDelay: "1.5s" }}>
+              <StatCard 
+                label="Cumulative advertising spend" 
+                value="$1,370,122" 
+                className="shadow-xl shadow-primary/5"
+              />
+            </div>
+          </div>
+
+          {/* Mobile Layout Cards */}
+          <div className="md:hidden grid grid-cols-2 gap-4 w-full px-4 relative z-10">
+            <StatCard label="Existing users" value="214,755" compact />
+            <StatCard label="Coverage countries" value="80+" compact />
+            <StatCard label="Industries" value="40+" compact />
+            <StatCard label="Ad Spend" value="$1.3M+" compact />
           </div>
         </div>
+
+        {/* CTA Button */}
+        {/* <div className="text-center mt-12 relative z-10">
+          <button className="btn-gradient rounded-full px-10 py-4 text-lg font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-300">
+            Get Started Now
+          </button>
+        </div> */}
       </div>
     </section>
+  )
+}
+
+function StatCard({ label, value, className = "", compact = false }: { label: string; value: string; className?: string; compact?: boolean }) {
+  return (
+    <div className={`bg-background/80 backdrop-blur-xl border border-border/50 rounded-2xl p-6 md:min-w-[200px] hover:border-primary/50 transition-colors ${className}`}>
+      <p className="text-sm font-medium text-muted-foreground mb-1 whitespace-nowrap">{label}</p>
+      <p className={`${compact ? 'text-xl' : 'text-3xl'} font-bold text-gradient-brand`}>{value}</p>
+    </div>
   )
 }
