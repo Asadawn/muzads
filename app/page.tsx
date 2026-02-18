@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
+import { SearchKeywords } from "@/components/search-keywords"
 import { Showcase } from "@/components/showcase"
 import { TextMarquee } from "@/components/text-marquee"
 import { HowItWorks } from "@/components/how-it-works"
@@ -18,6 +19,7 @@ export default function Page() {
     <main className="min-h-screen bg-background">
       <Navbar />
       <Hero />
+      <SearchKeywords />
       <Showcase />
       <TextMarquee />
       <HowItWorks />

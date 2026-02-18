@@ -31,7 +31,7 @@ const useCases = [
     icon: Instagram,
   },
   {
-    label: "TikTok Video Generator",
+    label: "TikTok Ads Compaign",
     href: "/use-cases/tiktok",
     icon: Video,
   },
