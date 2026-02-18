@@ -160,7 +160,7 @@ export default function DashboardLayout({
             </nav>
 
             {/* User Profile / Logout */}
-            {/* <div className="p-4 border-t border-border space-y-4">
+            <div className="p-4 border-t border-border space-y-4">
               {user && (
                 <div className="flex items-center gap-3 px-2 mb-2">
                   <div className="w-8 h-8 rounded-full bg-gradient-brand flex items-center justify-center text-white text-xs font-bold">
@@ -182,7 +182,7 @@ export default function DashboardLayout({
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
               </Button>
-            </div> */}
+            </div>
           </div>
         </aside>
 
