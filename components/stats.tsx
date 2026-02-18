@@ -45,7 +45,7 @@ export function Stats() {
           {/* Floating Cards - Desktop Layout */}
           <div className="hidden md:block absolute inset-0">
             {/* Top Left */}
-            <div className="absolute top-[10%] left-[5%] animate-float">
+            <div className="absolute top-[10%] left-[20%] animate-float">
               <StatCard 
                 label="Existing users" 
                 value="214,755" 
@@ -53,7 +53,7 @@ export function Stats() {
               />
             </div>
             {/* Top Right */}
-            <div className="absolute top-[15%] right-[5%] animate-float" style={{ animationDelay: "1s" }}>
+            <div className="absolute top-[15%] right-[15%] animate-float" style={{ animationDelay: "1s" }}>
               <StatCard 
                 label="Coverage countries" 
                 value="80+" 
@@ -61,7 +61,7 @@ export function Stats() {
               />
             </div>
             {/* Bottom Left */}
-            <div className="absolute bottom-[20%] left-[8%] animate-float" style={{ animationDelay: "2s" }}>
+            <div className="absolute bottom-[20%] left-[18%] animate-float" style={{ animationDelay: "2s" }}>
               <StatCard 
                 label="Industries" 
                 value="40+" 
@@ -69,7 +69,7 @@ export function Stats() {
               />
             </div>
             {/* Bottom Right */}
-            <div className="absolute bottom-[10%] right-[8%] animate-float" style={{ animationDelay: "1.5s" }}>
+            <div className="absolute bottom-[10%] right-[18%] animate-float" style={{ animationDelay: "1.5s" }}>
               <StatCard 
                 label="Cumulative advertising spend" 
                 value="$1,370,122" 
