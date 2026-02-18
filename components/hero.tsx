@@ -25,7 +25,7 @@ export function Hero() {
         {/* Main headline updated */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-8 opacity-0 animate-fade-in-up stagger-1">
           <span className="text-balance block">Launch 10x more</span>
-          <span className="text-gradient-brand">content.</span>{" "}
+          <span className="text-gradient-brand">content. </span>{" "}
           <span className="text-muted-foreground/70">75% faster.</span>
         </h1>
 
