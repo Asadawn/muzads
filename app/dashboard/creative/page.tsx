@@ -34,6 +34,7 @@ const mockCreatives: Creative[] = [
     id: "2",
     name: "Product Showcase Video",
     type: "video",
+    thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop",
     duration: "00:15",
     size: "15.4 MB",
     usageCount: 5,
@@ -41,33 +42,16 @@ const mockCreatives: Creative[] = [
   },
   {
     id: "3",
-    name: "Summer Sale Headline",
-    type: "copy",
-    content: "Get up to 50% off on all items this summer. Limited time offer only at Muzads store.",
-    usageCount: 24,
-    lastUsed: "1 day ago"
-  },
-  {
-    id: "4",
-    name: "Brand Logo - Transparent",
-    type: "image",
-    thumbnail: "https://images.unsplash.com/photo-1599305090598-fe179d501c27?q=80&w=800&auto=format&fit=crop",
-    dimensions: "512x512",
-    size: "450 KB",
-    usageCount: 45,
-    lastUsed: "Today"
-  },
-  {
-    id: "5",
     name: "Fitness App Reel",
     type: "video",
+    thumbnail: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop",
     duration: "00:30",
     size: "42.1 MB",
     usageCount: 2,
     lastUsed: "1 week ago"
   },
   {
-    id: "6",
+    id: "4",
     name: "Coffee Shop Promo",
     type: "image",
     thumbnail: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",

@@ -1,4 +1,3 @@
-"use client"
 
 import { Brain, Globe } from "lucide-react"
 

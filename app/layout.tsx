@@ -24,6 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://prod.spline.design" />
+      </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <AuthProvider>
           {children}

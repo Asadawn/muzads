@@ -52,20 +52,34 @@ export function CreativeCard({ creative }: CreativeCardProps) {
     <Card className="group overflow-hidden border-border bg-card hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
       {/* Media Preview */}
       <div className="relative aspect-square bg-muted flex items-center justify-center overflow-hidden">
-        {creative.type === "image" && creative.thumbnail ? (
-          <img 
-            src={creative.thumbnail} 
-            alt={creative.name} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-          />
+        {(creative.type === "image" || creative.type === "video") && creative.thumbnail ? (
+          <div className="relative w-full h-full">
+            <img 
+              src={creative.thumbnail} 
+              alt={creative.name} 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+            />
+            {creative.type === "video" && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
+                  <Video className="w-6 h-6 text-white" />
+                </div>
+              </div>
+            )}
+          </div>
         ) : creative.type === "video" ? (
           <div className="w-full h-full bg-slate-900 flex flex-col items-center justify-center gap-2">
             <Video className="w-12 h-12 text-primary/40" />
             <span className="text-[10px] font-bold text-primary/60 uppercase racking-widest">{creative.duration}</span>
           </div>
         ) : creative.type === "copy" ? (
-          <div className="p-6 text-sm text-muted-foreground line-clamp-6 text-center italic">
-            "{creative.content}"
+          <div className="w-full h-full bg-gradient-to-br from-purple-500/10 via-blue-500/5 to-transparent p-6 flex items-center justify-center">
+            <div className="p-4 rounded-xl bg-background/40 backdrop-blur-[2px] border border-white/10 shadow-inner">
+              <FileText className="w-6 h-6 text-primary/40 mb-3 mx-auto" />
+              <p className="text-sm text-muted-foreground line-clamp-4 text-center italic leading-relaxed">
+                "{creative.content}"
+              </p>
+            </div>
           </div>
         ) : (
           <ImageIcon className="w-12 h-12 text-muted-foreground/20" />
@@ -83,7 +97,7 @@ export function CreativeCard({ creative }: CreativeCardProps) {
           <Button size="icon" variant="secondary" className="h-9 w-9 rounded-full shadow-lg">
             <Eye className="h-4 w-4" />
           </Button>
-          <Button size="icon" variant="primary" className="h-9 w-9 rounded-full shadow-lg">
+          <Button size="icon" className="h-9 w-9 rounded-full shadow-lg btn-gradient border-0 px-0">
             <Download className="h-4 w-4" />
           </Button>
         </div>

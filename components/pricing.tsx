@@ -1,4 +1,3 @@
-"use client"
 
 import { Check, Sparkles, Zap, Crown, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"

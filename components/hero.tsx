@@ -9,8 +9,11 @@ import { Star, Zap, Shield, ArrowRight, Play } from "lucide-react"
 const Spline = dynamic(() => import("@splinetool/react-spline"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-16 h-16 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+    <div className="w-full h-[500px] flex items-center justify-center bg-card/20 backdrop-blur-sm rounded-3xl border border-white/5 animate-pulse">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-16 h-16 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+        <p className="text-sm text-muted-foreground animate-pulse">Initializing Creative Engine...</p>
+      </div>
     </div>
   ),
 }) as ComponentType<{ scene: string; className?: string }>;
@@ -35,14 +38,14 @@ export function Hero() {
         </div>
 
         {/* Main headline updated */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-8 opacity-0 animate-fade-in-up stagger-1">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-8 animate-fade-in-up">
           <span className="text-balance block">Launch 10x more</span>
           <span className="text-gradient-brand">content. </span>{" "}
           <span className="text-muted-foreground/70">75% faster.</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 text-pretty opacity-0 animate-fade-in-up stagger-2">
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 text-pretty animate-fade-in-up stagger-1">
           Muzads turns your website into ads, emails, and social posts. 
           Hundreds of content pieces generated, while you sleep.
         </p>

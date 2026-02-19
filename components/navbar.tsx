@@ -88,6 +88,7 @@ export function Navbar() {
                 alt="Muzads Logo" 
                 width={40} 
                 height={40} 
+                priority
                 className="object-contain bg-white rounded-full p-0 group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300"
               />
             </div>

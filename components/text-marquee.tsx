@@ -1,4 +1,3 @@
-"use client"
 
 const words = [
   "At", "Muzads", "we're", "revolutionizing", "how", "founders", "create", "content.",

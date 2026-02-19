@@ -65,6 +65,7 @@ function ShowcaseCard({ item }: { item: typeof showcaseItems[0] }) {
           src={item.image} 
           alt={item.title} 
           fill 
+          sizes="(max-width: 768px) 100vw, 320px"
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
