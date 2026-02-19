@@ -1,11 +1,23 @@
 "use client"
 
+import { Suspense, type ComponentType } from "react"
+import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { Star, Zap, Shield, ArrowRight, Play } from "lucide-react"
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Spline = dynamic(() => import("@splinetool/react-spline"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-16 h-16 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+    </div>
+  ),
+}) as ComponentType<{ scene: string; className?: string }>;
+
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-24 px-4 overflow-hidden">
+    <section className="relative pt-32 pb-2 px-4 overflow-hidden">
       {/* Background effects updated for new brand */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl animate-pulse-glow" />
@@ -85,6 +97,13 @@ export function Hero() {
           </div>
         </div>
       </div>
+      {/* Spline Container with premium styling */}
+        <Spline 
+          scene="https://prod.spline.design/sJWvK5uBr3L3NBaI/scene.splinecode"
+          className="ml-20 w-full h-full"
+        />
+        {/* Bottom fade overlay for smooth transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-secondary/20 to-transparent pointer-events-none" />
     </section>
   )
 }
