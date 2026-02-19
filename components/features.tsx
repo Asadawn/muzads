@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Video, ImageIcon, Share2, Mail, Play, ArrowRight } from "lucide-react"
+import { Video, ImageIcon, Share2, Mail, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FadeIn } from "@/components/ui/fade-in"
 
@@ -101,30 +101,15 @@ export function Features() {
 
           <FadeIn direction="right" delay={400} className="order-1 lg:order-2">
             <div className="relative aspect-video rounded-2xl bg-card border border-border overflow-hidden shadow-2xl shadow-primary/10 hover:shadow-primary/20 transition-shadow duration-500">
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline 
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop" 
+                alt="Marketing Dashboard Preview"
                 className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/dummyvideo.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
               
-              {/* Play button overlay - purely aesthetic since it autoplays */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none group">
-                <div className="w-20 h-20 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Play className="w-8 h-8 text-white ml-1" />
-                </div>
-              </div>
-
-              <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-                <div className="h-1.5 bg-white/20 rounded-full overflow-hidden backdrop-blur-md">
-                  <div className="h-full w-1/3 bg-gradient-brand rounded-full animate-pulse" />
-                </div>
-              </div>
+              
             </div>
           </FadeIn>
         </div>
